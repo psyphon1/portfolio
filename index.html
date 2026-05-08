@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chinmay Duse — AI/ML Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#07070c;
+  --s1:#0f0f18;
+  --s2:#16161f;
+  --border:rgba(255,255,255,0.07);
+  --bh:rgba(255,255,255,0.15);
+  --text:#eeeef5;
+  --muted:#7878a0;
+  --accent:#6c63ff;
+  --a2:#a855f7;
+  --a3:#38bdf8;
+  --green:#22d3a0;
+  --font:'Montserrat',sans-serif;
+}
+html{background:var(--bg);scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6}
+
+/* noise */
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:100;
+  background:rgba(7,7,12,0.8);backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+  padding:0 2.5rem;height:64px;
+  display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
+.logo-mark{background:linear-gradient(135deg,var(--accent),var(--a2));color:#fff;
+  font-size:.65rem;font-weight:900;letter-spacing:.08em;padding:4px 8px;border-radius:7px}
+.logo-name{font-size:1rem;font-weight:700;letter-spacing:-.01em}
+.nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.82rem;font-weight:600;
+  letter-spacing:.04em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{padding:8px 22px;background:var(--accent);color:#fff!important;
+  border-radius:100px;transition:all .2s!important}
+.nav-cta:hover{background:#5a52e8;transform:translateY(-1px);box-shadow:0 6px 24px rgba(108,99,255,.4)}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+  align-items:center;text-align:center;padding:100px 2rem 5rem;position:relative;overflow:hidden}
+.hero-orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(80px);opacity:.35}
+.orb1{width:600px;height:600px;top:-200px;left:50%;transform:translateX(-50%);
+  background:radial-gradient(circle,var(--accent),transparent 70%)}
+.orb2{width:400px;height:400px;bottom:-100px;right:-100px;
+  background:radial-gradient(circle,var(--a2),transparent 70%);opacity:.2}
+.hero-grid{position:absolute;inset:0;pointer-events:none;
+  background-size:55px 55px;
+  background-image:linear-gradient(to right,rgba(255,255,255,.02) 1px,transparent 1px),
+    linear-gradient(to bottom,rgba(255,255,255,.02) 1px,transparent 1px);
+  mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black,transparent)}
+
+.badge{display:inline-flex;align-items:center;gap:8px;margin-bottom:2.5rem;
+  padding:6px 18px;border-radius:100px;
+  border:1px solid rgba(34,211,160,.3);background:rgba(34,211,160,.07);
+  font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);
+  animation:slideUp .6s ease both}
+.ping-dot{position:relative;width:8px;height:8px;display:inline-flex}
+.ping-dot::before{content:'';position:absolute;inset:0;border-radius:50%;
+  background:var(--green);animation:ping 1.6s ease-out infinite}
+.ping-dot::after{content:'';position:absolute;inset:0;border-radius:50%;background:var(--green)}
+@keyframes ping{0%{transform:scale(1);opacity:1}100%{transform:scale(2.8);opacity:0}}
+
+.hero-title{font-size:clamp(2.8rem,7.5vw,6rem);font-weight:900;line-height:1.0;
+  letter-spacing:-.04em;color:var(--text);margin-bottom:1.5rem;
+  animation:slideUp .6s .1s ease both}
+.hero-title .grad{background:linear-gradient(120deg,var(--accent) 0%,var(--a2) 45%,var(--a3) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+.hero-sub{font-size:1.05rem;font-weight:400;color:var(--muted);max-width:500px;
+  line-height:1.75;margin-bottom:3rem;animation:slideUp .6s .2s ease both}
+
+.hero-btns{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;justify-content:center;
+  animation:slideUp .6s .3s ease both}
+.btn-p{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;
+  background:var(--accent);color:#fff;border-radius:10px;font-weight:700;
+  font-size:.85rem;text-decoration:none;letter-spacing:.02em;
+  transition:all .2s;font-family:var(--font)}
+.btn-p:hover{background:#5a52e8;transform:translateY(-2px);box-shadow:0 12px 40px rgba(108,99,255,.45)}
+.btn-g{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;
+  border:1px solid var(--bh);color:var(--text);border-radius:10px;font-weight:600;
+  font-size:.85rem;text-decoration:none;letter-spacing:.02em;
+  background:rgba(255,255,255,.03);transition:all .2s;font-family:var(--font)}
+.btn-g:hover{border-color:var(--accent);color:var(--accent);background:rgba(108,99,255,.08)}
+.socials{display:flex;gap:.6rem}
+.soc{display:flex;align-items:center;justify-content:center;width:42px;height:42px;
+  border:1px solid var(--border);border-radius:10px;color:var(--muted);
+  text-decoration:none;transition:all .2s}
+.soc:hover{border-color:var(--accent);color:var(--accent);background:rgba(108,99,255,.1)}
+.soc svg{width:18px;height:18px}
+
+@keyframes slideUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+/* TICKER */
+.ticker-wrap{border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  background:var(--s1);overflow:hidden;padding:14px 0}
+.ticker{display:flex;gap:2.5rem;animation:tick 35s linear infinite;width:max-content}
+.ticker span{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);white-space:nowrap;display:flex;align-items:center;gap:.6rem}
+.ticker span::before{content:'◆';color:var(--accent);font-size:.45rem}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECTIONS */
+section{padding:6rem 2rem;position:relative}
+.wrap{max-width:1080px;margin:0 auto}
+.sec-label{font-size:.65rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:.6rem;display:flex;align-items:center;gap:8px}
+.sec-label::before{content:'';display:inline-block;width:18px;height:2px;background:var(--accent)}
+.sec-title{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:900;color:var(--text);
+  letter-spacing:-.03em;line-height:1.15;margin-bottom:.8rem}
+.sec-desc{color:var(--muted);font-size:.95rem;max-width:480px;line-height:1.75;font-weight:400}
+
+/* SKILLS */
+.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:3rem}
+.card{background:var(--s1);border:1px solid var(--border);border-radius:18px;
+  padding:1.75rem;transition:all .3s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
+.card::after{content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at top right,rgba(108,99,255,.07),transparent 65%);
+  opacity:0;transition:opacity .3s}
+.card:hover{border-color:var(--bh);transform:translateY(-3px);
+  box-shadow:0 16px 48px rgba(0,0,0,.5)}
+.card:hover::after{opacity:1}
+.card.wide{grid-column:span 2}
+.ci{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;
+  justify-content:center;font-size:1.2rem;margin-bottom:1.1rem}
+.ci-v{background:rgba(108,99,255,.14)}
+.ci-b{background:rgba(56,189,248,.14)}
+.ci-p{background:rgba(168,85,247,.14)}
+.ci-g{background:rgba(34,211,160,.14)}
+.ci-o{background:rgba(251,146,60,.14)}
+.ct{font-size:1rem;font-weight:800;color:var(--text);margin-bottom:.7rem;letter-spacing:-.01em}
+.sl{list-style:none;display:flex;flex-direction:column;gap:6px}
+.sl li{display:flex;align-items:center;gap:7px;font-size:.82rem;color:var(--muted);font-weight:500}
+.sd{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:.8rem}
+.tag{font-size:.68rem;font-weight:700;letter-spacing:.04em;padding:4px 10px;
+  border:1px solid var(--border);border-radius:6px;color:var(--muted);
+  background:rgba(255,255,255,.02)}
+.card-2col{display:flex;gap:2.5rem;flex-wrap:wrap}
+.card-2col > div{flex:1;min-width:180px}
+.divider{border-left:1px solid var(--border);padding-left:2rem}
+
+/* PROJECTS */
+#projects{background:var(--s1)}
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:3rem}
+.pcard{background:var(--bg);border:1px solid var(--border);border-radius:18px;
+  overflow:hidden;transition:all .3s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column}
+.pcard:hover{border-color:var(--bh);transform:translateY(-4px);
+  box-shadow:0 20px 60px rgba(0,0,0,.55)}
+.pthumb{height:170px;display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden}
+.pthumb-emoji{font-size:3.2rem;position:relative;z-index:1;
+  filter:drop-shadow(0 0 28px rgba(108,99,255,.5))}
+.pthumb-overlay{position:absolute;inset:0;
+  background:linear-gradient(135deg,var(--from,rgba(108,99,255,.15)) 0%,rgba(7,7,12,0) 100%)}
+.pbody{padding:1.5rem;flex:1;display:flex;flex-direction:column}
+.ptag{font-size:.62rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:.5rem;display:block}
+.pname{font-size:1.05rem;font-weight:800;color:var(--text);margin-bottom:.5rem;
+  letter-spacing:-.02em;line-height:1.3}
+.pdesc{font-size:.82rem;color:var(--muted);line-height:1.7;margin-bottom:1rem;
+  font-weight:400;flex:1}
+.pfeats{margin-bottom:1rem}
+.pfeat{font-size:.75rem;color:var(--muted);padding:3px 0;display:flex;align-items:flex-start;gap:6px;font-weight:500}
+.pfeat::before{content:'→';color:var(--accent);font-size:.7rem;margin-top:1px;flex-shrink:0}
+.pfooter{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.plinks{display:flex;gap:.5rem;flex-wrap:wrap}
+.pl{display:inline-flex;align-items:center;gap:5px;font-size:.73rem;font-weight:700;
+  color:var(--accent);text-decoration:none;padding:5px 12px;
+  border:1px solid rgba(108,99,255,.3);border-radius:7px;
+  background:rgba(108,99,255,.07);transition:all .2s;letter-spacing:.02em}
+.pl:hover{background:rgba(108,99,255,.18);border-color:var(--accent)}
+.pl.live{color:var(--green);border-color:rgba(34,211,160,.3);background:rgba(34,211,160,.07)}
+.pl.live:hover{background:rgba(34,211,160,.18);border-color:var(--green)}
+.pl.linkedin{color:#60a5fa;border-color:rgba(96,165,250,.3);background:rgba(96,165,250,.07)}
+.pl.linkedin:hover{background:rgba(96,165,250,.18);border-color:#60a5fa}
+.plangs{display:flex;gap:5px;flex-wrap:wrap}
+.plang{font-size:.6rem;font-weight:700;padding:3px 7px;border-radius:5px;
+  background:rgba(255,255,255,.05);color:var(--muted);border:1px solid var(--border)}
+
+/* EXPERIENCE */
+.timeline{margin-top:3rem;padding-left:26px;position:relative}
+.timeline::before{content:'';position:absolute;left:4px;top:0;bottom:0;
+  width:1px;background:linear-gradient(to bottom,var(--accent),var(--a2),transparent)}
+.titem{position:relative;margin-bottom:2.8rem}
+.tdot{position:absolute;left:-30px;top:5px;width:13px;height:13px;border-radius:50%;
+  background:var(--accent);box-shadow:0 0 0 3px rgba(108,99,255,.2),0 0 18px rgba(108,99,255,.45)}
+.thead{display:flex;justify-content:space-between;align-items:flex-start;
+  gap:1rem;flex-wrap:wrap;margin-bottom:.4rem}
+.trole{font-size:1rem;font-weight:800;color:var(--text);letter-spacing:-.01em}
+.tperiod{font-size:.7rem;font-weight:700;color:var(--muted);padding:4px 10px;
+  border:1px solid var(--border);border-radius:6px;background:var(--s1);
+  letter-spacing:.03em;white-space:nowrap}
+.tco{font-size:.85rem;font-weight:700;color:var(--accent);margin-bottom:.6rem}
+.tdesc{font-size:.82rem;color:var(--muted);line-height:1.75;font-weight:400}
+
+/* CERTS */
+.certs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem}
+.cert{background:var(--s1);border:1px solid var(--border);border-radius:13px;
+  padding:1.1rem 1.3rem;display:flex;align-items:center;gap:.9rem;transition:all .2s}
+.cert:hover{border-color:var(--bh);background:var(--s2)}
+.cert-ic{font-size:1.4rem;flex-shrink:0}
+.cert-nm{font-size:.8rem;font-weight:700;color:var(--text);line-height:1.35}
+.cert-is{font-size:.7rem;color:var(--muted);margin-top:2px;font-weight:500}
+
+/* CONTACT */
+#contact{background:var(--s1)}
+.contact-box{max-width:580px;margin:0 auto;text-align:center;
+  background:var(--bg);border:1px solid var(--border);border-radius:24px;
+  padding:3.5rem 2.5rem;position:relative;overflow:hidden}
+.contact-box::before{content:'';position:absolute;top:-1px;left:50%;transform:translateX(-50%);
+  width:160px;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
+.contact-glow{position:absolute;top:-150px;left:50%;transform:translateX(-50%);
+  width:500px;height:400px;pointer-events:none;
+  background:radial-gradient(ellipse,rgba(108,99,255,.1),transparent 70%)}
+.ct-title{font-size:2rem;font-weight:900;color:var(--text);letter-spacing:-.03em;
+  margin-bottom:.8rem;position:relative;z-index:1}
+.ct-desc{color:var(--muted);font-size:.88rem;line-height:1.75;margin-bottom:2rem;
+  position:relative;z-index:1;font-weight:400}
+.ct-btns{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;
+  position:relative;z-index:1}
+.ct-email{font-size:.8rem;color:var(--muted);margin-top:1.5rem;
+  position:relative;z-index:1;font-weight:500}
+.ct-email a{color:var(--accent);text-decoration:none}
+.ct-email a:hover{text-decoration:underline}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:1.8rem 2.5rem;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.ft{font-size:.75rem;color:var(--muted);font-weight:500}
+.fl{display:flex;gap:1.5rem}
+.fl a{font-size:.75rem;color:var(--muted);text-decoration:none;
+  font-weight:600;transition:color .2s}
+.fl a:hover{color:var(--text)}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .bento{grid-template-columns:1fr 1fr}
+  .card.wide{grid-column:span 2}
+  .proj-grid{grid-template-columns:1fr}
+  .certs-grid{grid-template-columns:repeat(2,1fr)}
+  nav .nav-links{display:none}
+}
+@media(max-width:600px){
+  .bento{grid-template-columns:1fr}
+  .card.wide{grid-column:span 1}
+  .certs-grid{grid-column:1fr}
+  .hero-btns{flex-direction:column}
+  .divider{border-left:none;padding-left:0;border-top:1px solid var(--border);padding-top:1.5rem}
+}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--bh);border-radius:3px}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">
+    <span class="logo-mark">CD</span>
+    <span class="logo-name">Chinmay Duse</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="orb hero-orb orb1"></div>
+  <div class="orb hero-orb orb2"></div>
+  <div class="hero-grid"></div>
+
+  <div class="badge"><span class="ping-dot"></span>Open to Work · Pune, Maharashtra</div>
+
+  <h1 class="hero-title">
+    AI/ML Engineer<br>
+    <span class="grad">Building Intelligent</span><br>
+    <span class="grad">Systems</span>
+  </h1>
+
+  <p class="hero-sub">
+    I build GenAI apps, RAG pipelines, and ML-powered products — from idea to deployment. Specializing in LLMs, automation, and scalable AI backends.
+  </p>
+
+  <div class="hero-btns">
+    <a href="#projects" class="btn-p">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      See My Work
+    </a>
+    <a href="mailto:chinmayduse.sits.comp@gmail.com" class="btn-g">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+      Get In Touch
+    </a>
+    <div class="socials">
+      <a href="https://github.com/psyphon1" target="_blank" class="soc" title="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/chinmayduse" target="_blank" class="soc" title="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span>Python</span><span>LangChain</span><span>FastAPI</span><span>RAG</span><span>LLMs</span>
+    <span>Llama 3</span><span>Groq API</span><span>FAISS</span><span>Scikit-learn</span>
+    <span>OpenCV</span><span>N8N Automation</span><span>Streamlit</span><span>MongoDB</span>
+    <span>Flask</span><span>Azure AZ-900</span><span>Selenium</span><span>Playwright</span>
+    <span>Python</span><span>LangChain</span><span>FastAPI</span><span>RAG</span><span>LLMs</span>
+    <span>Llama 3</span><span>Groq API</span><span>FAISS</span><span>Scikit-learn</span>
+    <span>OpenCV</span><span>N8N Automation</span><span>Streamlit</span><span>MongoDB</span>
+    <span>Flask</span><span>Azure AZ-900</span><span>Selenium</span><span>Playwright</span>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="rv">
+      <div class="sec-label">Capabilities</div>
+      <h2 class="sec-title">Technical Arsenal</h2>
+      <p class="sec-desc">The tools I reach for when building production-grade AI systems.</p>
+    </div>
+    <div class="bento">
+      <div class="card rv">
+        <div class="ci ci-v">🤖</div>
+        <div class="ct">GenAI &amp; LLMs</div>
+        <ul class="sl">
+          <li><span class="sd"></span>LLMs &amp; Prompt Engineering</li>
+          <li><span class="sd"></span>RAG Architectures (FAISS, LangChain)</li>
+          <li><span class="sd"></span>Llama 3, Groq, OpenAI APIs</li>
+          <li><span class="sd"></span>Hugging Face · Model Fine-tuning</li>
+          <li><span class="sd"></span>FastEmbed · Vector Stores</li>
+        </ul>
+      </div>
+      <div class="card rv">
+        <div class="ci ci-b">📊</div>
+        <div class="ct">ML &amp; Data Science</div>
+        <ul class="sl">
+          <li><span class="sd"></span>Scikit-learn · XGBoost · SVM</li>
+          <li><span class="sd"></span>NLP Pipelines</li>
+          <li><span class="sd"></span>Computer Vision (OpenCV)</li>
+          <li><span class="sd"></span>Pandas · NumPy · Matplotlib</li>
+          <li><span class="sd"></span>Model Dev, Evaluation &amp; Deployment</li>
+        </ul>
+      </div>
+      <div class="card rv">
+        <div class="ci ci-p">⚡</div>
+        <div class="ct">Backend &amp; APIs</div>
+        <div class="tags">
+          <span class="tag">FastAPI</span><span class="tag">Flask</span>
+          <span class="tag">Python</span><span class="tag">REST APIs</span>
+          <span class="tag">OAuth2</span><span class="tag">Gmail API</span>
+          <span class="tag">Google Sheets API</span><span class="tag">Serper API</span>
+        </div>
+      </div>
+      <div class="card rv">
+        <div class="ci ci-g">🗄️</div>
+        <div class="ct">Data &amp; Databases</div>
+        <div class="tags">
+          <span class="tag">MySQL</span><span class="tag">MongoDB</span>
+          <span class="tag">SQL</span><span class="tag">Pandas</span><span class="tag">NumPy</span>
+        </div>
+      </div>
+      <div class="card rv">
+        <div class="ci ci-o">⚙️</div>
+        <div class="ct">Automation &amp; DevTools</div>
+        <div class="tags">
+          <span class="tag">N8N</span><span class="tag">Playwright</span>
+          <span class="tag">Selenium</span><span class="tag">BeautifulSoup4</span>
+          <span class="tag">Git &amp; GitHub</span><span class="tag">Docker</span>
+        </div>
+      </div>
+      <div class="card rv">
+        <div class="ci ci-b">☁️</div>
+        <div class="ct">Cloud &amp; Deployment</div>
+        <ul class="sl">
+          <li><span class="sd"></span>Microsoft Azure (AZ-900 Certified)</li>
+          <li><span class="sd"></span>Render · Railway · Vercel</li>
+          <li><span class="sd"></span>Streamlit Cloud</li>
+          <li><span class="sd"></span>Chrome Extension (Manifest V3)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="rv">
+      <div class="sec-label">Work</div>
+      <h2 class="sec-title">Featured Projects</h2>
+      <p class="sec-desc">Shipped AI systems — from multi-agent research tools to production ML apps.</p>
+    </div>
+    <div class="proj-grid">
+
+      <!-- 1. Deep Research Agent -->
+      <div class="pcard rv">
+        <div class="pthumb" style="background:linear-gradient(135deg,#0a0a1a,#0e1a2e)">
+          <div class="pthumb-overlay" style="--from:rgba(56,189,248,.18)"></div>
+          <span class="pthumb-emoji">🔬</span>
+        </div>
+        <div class="pbody">
+          <span class="ptag">Multi-Agent · LangChain · Groq</span>
+          <div class="pname">Deep Research Multi-Agent System</div>
+          <p class="pdesc">A multi-agent AI research system powered by LangChain and Groq. Automates web search, intelligent report generation, and self-critique loops — with a clean Streamlit interface.</p>
+          <div class="pfeats">
+            <div class="pfeat">Multi-agent orchestration with LangChain + Groq (Llama 3)</div>
+            <div class="pfeat">Automated web search → report → critique pipeline</div>
+            <div class="pfeat">Streamlit UI for interactive research sessions</div>
+          </div>
+          <div class="pfooter">
+            <div class="plinks">
+              <a href="https://deep-research-psyphon-agent.streamlit.app/" target="_blank" class="pl live">🚀 Live App</a>
+              <a href="https://github.com/psyphon1" target="_blank" class="pl">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                Code
+              </a>
+            </div>
+            <div class="plangs"><span class="plang">Python</span><span class="plang">LangChain</span><span class="plang">Groq</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Movie Recommender -->
+      <div class="pcard rv">
+        <div class="pthumb" style="background:linear-gradient(135deg,#1a0a1a,#1a100a)">
+          <div class="pthumb-overlay" style="--from:rgba(168,85,247,.18)"></div>
+          <span class="pthumb-emoji">🎬</span>
+        </div>
+        <div class="pbody">
+          <span class="ptag">ML · Recommendation · Scikit-learn</span>
+          <div class="pname">MovieMatch — Movie Recommendation System</div>
+          <p class="pdesc">Content-based movie recommender built in Python using Scikit-learn. Analyzes movie features to surface similar titles with precision — deployed live on Vercel.</p>
+          <div class="pfeats">
+            <div class="pfeat">Content-based filtering using TF-IDF &amp; cosine similarity</div>
+            <div class="pfeat">Built with Scikit-learn, Python &amp; Pandas</div>
+            <div class="pfeat">Clean UI deployed on Vercel</div>
+          </div>
+          <div class="pfooter">
+            <div class="plinks">
+              <a href="https://movie-recommendation-system-1-0.vercel.app/" target="_blank" class="pl live">🚀 Live Demo</a>
+              <a href="https://github.com/psyphon1" target="_blank" class="pl">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                Code
+              </a>
+            </div>
+            <div class="plangs"><span class="plang">Python</span><span class="plang">Sklearn</span><span class="plang">Vercel</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. PageMindAI -->
+      <div class="pcard rv">
+        <div class="pthumb" style="background:linear-gradient(135deg,#0a1a0a,#0a0a1a)">
+          <div class="pthumb-overlay" style="--from:rgba(34,211,160,.15)"></div>
+          <span class="pthumb-emoji">🧠</span>
+        </div>
+        <div class="pbody">
+          <span class="ptag">RAG · Chrome Extension · FastAPI</span>
+          <div class="pname">PageMindAI — Universal RAG Chatbot</div>
+          <p class="pdesc">Chat with any YouTube video or website in seconds. Chrome Extension + FastAPI backend using RAG to turn the web into your personal knowledge base. Powered by Llama 3.3-70B via Groq and FAISS vector search.</p>
+          <div class="pfeats">
+            <div class="pfeat">YouTube transcript extraction + website semantic scraping</div>
+            <div class="pfeat">FAISS in-memory vector store + FastEmbed (BGE-small)</div>
+            <div class="pfeat">ConversationalRetrievalChain · Glassmorphism dark UI</div>
+          </div>
+          <div class="pfooter">
+            <div class="plinks">
+              <a href="https://github.com/psyphon1/PageMindAI" target="_blank" class="pl">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                GitHub
+              </a>
+              <a href="https://www.linkedin.com/posts/chinmayduse_ai-rag-llama3-ugcPost-7453374761352675328-ZCRC?utm_source=share&utm_medium=member_desktop&rcm=ACoAAE0vcQIB6eaElSQ4pBETLIrRINK2Q0ddzYo" target="_blank" class="pl linkedin">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                Demo Video
+              </a>
+            </div>
+            <div class="plangs"><span class="plang">JS</span><span class="plang">FastAPI</span><span class="plang">RAG</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. AI Lead Agent (Client Project) -->
+      <div class="pcard rv">
+        <div class="pthumb" style="background:linear-gradient(135deg,#1a0e0a,#0a1018)">
+          <div class="pthumb-overlay" style="--from:rgba(251,146,60,.15)"></div>
+          <span class="pthumb-emoji">📧</span>
+        </div>
+        <div class="pbody">
+          <span class="ptag">AI Automation · B2B · Client Project</span>
+          <div class="pname">AI Lead Agent — Automated SDR</div>
+          <p class="pdesc">Full-stack automated Sales Development Representative built for a client at Gradence Global. Finds businesses, scrapes contact info, and generates hyper-personalized cold emails via Gmail — automatically.</p>
+          <div class="pfeats">
+            <div class="pfeat">Hybrid scraping: Fast mode (requests) + Stealth mode (Selenium/Cloudflare bypass)</div>
+            <div class="pfeat">LLM personalization via Groq Llama 3.3-70B · Gmail OAuth2 drafts</div>
+            <div class="pfeat">CRM export to Google Sheets · anti-spam logic</div>
+          </div>
+          <div class="pfooter">
+            <div class="plinks">
+              <a href="https://leadgenog.vercel.app/" target="_blank" class="pl live">🚀 Live Project</a>
+              <a href="https://github.com/psyphon1/AI_Lead_Agent" target="_blank" class="pl">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                Code
+              </a>
+            </div>
+            <div class="plangs"><span class="plang">Python</span><span class="plang">Flask</span><span class="plang">Selenium</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Healthify -->
+      <div class="pcard rv" style="grid-column:1/-1">
+        <div style="display:flex;flex-wrap:wrap">
+          <div class="pthumb" style="flex:0 0 280px;height:auto;min-height:180px;background:linear-gradient(135deg,#0a1818,#0a1a0e)">
+            <div class="pthumb-overlay" style="--from:rgba(34,211,160,.15)"></div>
+            <span class="pthumb-emoji">💙</span>
+          </div>
+          <div class="pbody" style="flex:1;min-width:260px">
+            <span class="ptag">ML · Healthcare · Deployed</span>
+            <div class="pname">Healthify 1.0 — Diabetes Prediction App</div>
+            <p class="pdesc">Instant, accurate diabetes risk prediction with dynamic UX, multiple ML models (Random Forest, SVM, XGBoost, Logistic Regression), and one-click PDF medical report download. Deployed live on Render. Best model: Random Forest at 84% accuracy.</p>
+            <div class="pfeats">
+              <div class="pfeat">Multi-model ensemble: RF 84%, SVM 81%, XGBoost 80.5%, Ensemble 83.5%</div>
+              <div class="pfeat">Adaptive form logic (e.g. pregnancy fields only for eligible users)</div>
+              <div class="pfeat">Downloadable PDF medical-style report · no data stored on server</div>
+            </div>
+            <div class="pfooter">
+              <div class="plinks">
+                <a href="https://healthify-yzfn.onrender.com/" target="_blank" class="pl live">🚀 Live Demo</a>
+                <a href="https://github.com/psyphon1/healthify-1.0" target="_blank" class="pl">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                  GitHub
+                </a>
+              </div>
+              <div class="plangs"><span class="plang">Python</span><span class="plang">Flask</span><span class="plang">Sklearn</span><span class="plang">Render</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <div class="rv">
+      <div class="sec-label">Journey</div>
+      <h2 class="sec-title">Experience</h2>
+    </div>
+    <div class="timeline">
+      <div class="titem rv">
+        <div class="tdot"></div>
+        <div class="thead">
+          <div class="trole">AI &amp; ML Intern</div>
+          <div class="tperiod">Nov 2025 – May 2026</div>
+        </div>
+        <div class="tco">Gradence Global · Remote, Coventry, England</div>
+        <div class="tdesc">Built an end-to-end automated B2B lead generation and email outreach system using Python, Flask, web scraping (Requests + Selenium), Gmail API, Google Sheets API, Serper Dev API, and LLM-based email personalization via Groq Llama 3.3. Deployed the live client product at <a href="https://leadgenog.vercel.app/" target="_blank" style="color:var(--accent)">leadgenog.vercel.app</a>.</div>
+      </div>
+      <div class="titem rv">
+        <div class="tdot" style="background:var(--a3);box-shadow:0 0 0 3px rgba(56,189,248,.2),0 0 18px rgba(56,189,248,.35)"></div>
+        <div class="thead">
+          <div class="trole">Data Science Intern</div>
+          <div class="tperiod">Jan 2025 – Apr 2025</div>
+        </div>
+        <div class="tco">Anyatam Adhyayan Education Service Pvt Ltd · Pune</div>
+        <div class="tdesc">Applied ML and data science techniques on real-world educational data. Developed predictive pipelines and worked with Pandas, NumPy, and Scikit-learn for data preprocessing, feature engineering, and model evaluation.</div>
+      </div>
+      <div class="titem rv">
+        <div class="tdot" style="background:var(--muted);box-shadow:none"></div>
+        <div class="thead">
+          <div class="trole">B.E. Computer Engineering</div>
+          <div class="tperiod">2022 – 2026</div>
+        </div>
+        <div class="tco">Sinhgad Institute of Technology and Science · SPPU, Pune</div>
+        <div class="tdesc">GPA: 7.21 (through 6th semester). Core coursework in data structures &amp; algorithms, AI/ML, computer networks, and software engineering — continuously complemented with self-built AI projects and internships.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="rv">
+      <div class="sec-label">Credentials</div>
+      <h2 class="sec-title">Certifications</h2>
+    </div>
+    <div class="certs-grid">
+      <div class="cert rv"><div class="cert-ic">☁️</div><div><div class="cert-nm">Azure Fundamentals (AZ-900)</div><div class="cert-is">Microsoft Certified</div></div></div>
+      <div class="cert rv"><div class="cert-ic">🐍</div><div><div class="cert-nm">Complete Python Bootcamp</div><div class="cert-is">Udemy</div></div></div>
+      <div class="cert rv"><div class="cert-ic">📊</div><div><div class="cert-nm">Python 101 for Data Science</div><div class="cert-is">IBM Cognitive Class AI</div></div></div>
+      <div class="cert rv"><div class="cert-ic">✨</div><div><div class="cert-nm">Generative AI &amp; ChatGPT</div><div class="cert-is">GeeksForGeeks</div></div></div>
+      <div class="cert rv"><div class="cert-ic">🤖</div><div><div class="cert-nm">Data Science + Machine Learning</div><div class="cert-is">Adhyayan Education Services</div></div></div>
+      <div class="cert rv"><div class="cert-ic">🏢</div><div><div class="cert-nm">Getting Started with Enterprise AI</div><div class="cert-is">IBM</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-box rv">
+      <div class="contact-glow"></div>
+      <div class="ct-title">Let's Build Together</div>
+      <p class="ct-desc">Open to AI/ML engineering roles, internships, and freelance projects. If you're building something intelligent — let's talk.</p>
+      <div class="ct-btns">
+        <a href="mailto:chinmayduse.sits.comp@gmail.com" class="btn-p">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          Send Email
+        </a>
+        <a href="https://www.linkedin.com/in/chinmayduse" target="_blank" class="btn-g">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/psyphon1" target="_blank" class="btn-g">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+      <div class="ct-email">
+        📩 <a href="mailto:chinmayduse.sits.comp@gmail.com">chinmayduse.sits.comp@gmail.com</a>
+        &nbsp;
+       
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft">© 2026 Chinmay Duse · Built with ❤️ &amp; a lot of Python</div>
+  <div class="fl">
+    <a href="https://github.com/psyphon1" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/chinmayduse" target="_blank">LinkedIn</a>
+    <a href="mailto:chinmayduse.sits.comp@gmail.com">Email</a>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e,i) => {
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('in'), e.target.dataset.delay||0);
+      obs.unobserve(e.target);
+    }
+  });
+},{threshold:.1,rootMargin:'0px 0px -30px 0px'});
+
+document.querySelectorAll('.rv').forEach((el,i)=>{
+  el.dataset.delay = (i%4)*70;
+  obs.observe(el);
+});
+</script>
+</body>
+</html>
