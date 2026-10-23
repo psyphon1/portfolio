@@ -5,9 +5,9 @@ A modern, minimalist portfolio showcasing AI/ML expertise, projects, and experie
 ## 🚀 Features
 
 - **Responsive Design** - Works perfectly on all devices
-- **Modern UI** - Glassmorphism design with smooth animations
-- **Fast Performance** - No build tools, pure HTML/CSS
-- **Dark Theme** - Easy on the eyes with carefully chosen colors
+- **Poster-style UI** - Navy, cream and gold palette with a cut-out portrait hero
+- **Fast Performance** - Single static page, no build step (Tailwind via CDN)
+- **Interactive** - Featured-project carousel, project filters and detail popups
 - **SEO Optimized** - Proper meta tags and semantic HTML
 
 ## 📁 Project Structure
@@ -15,6 +15,10 @@ A modern, minimalist portfolio showcasing AI/ML expertise, projects, and experie
 ```
 portfolio/
 ├── index.html          # Main portfolio file
+├── assets/             # Portrait cutout and social preview image
+├── tests/              # End-to-end test (Playwright + local Chrome)
+├── llms.txt            # LLM-readable summary
+├── robots.txt, sitemap.xml
 ├── vercel.json         # Vercel deployment config
 ├── README.md           # This file
 └── .gitignore          # Git ignore rules
@@ -34,6 +38,14 @@ python -m http.server 8000
 # Option 3: Using Node.js
 npx http-server
 ```
+
+## ✅ Testing
+
+```bash
+cd tests && npm install && npm test
+```
+
+Runs the whole page in Chrome: nav, carousel, filters, project popups, CTAs, responsive layout and an external-link check.
 
 ## 🚀 Deployment
 

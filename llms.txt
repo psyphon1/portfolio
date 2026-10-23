@@ -1,0 +1,37 @@
+# Chinmay Duse
+
+> Full-Stack Generative AI Developer based in Pune, Maharashtra, India. Builds production LLM applications, RAG pipelines, agentic AI and multi-agent systems. Open to AI/ML engineering roles.
+
+Contact: chinmayduse.sits.comp@gmail.com
+
+## Profiles
+- [Portfolio](https://psyphon.vercel.app/): projects, experience, stack, resume
+- [GitHub](https://github.com/psyphon1): source code for the projects below
+- [LinkedIn](https://www.linkedin.com/in/chinmayduse): work history
+- [Hugging Face](https://huggingface.co/psyphon1): Llama-2-7B Therapist Aura (QLoRA fine-tune)
+- [LeetCode](https://leetcode.com/psyphon1): 88 problems solved (67 easy, 19 medium, 2 hard)
+- [Resume](https://drive.google.com/file/d/1r7vwHrLEk-II5XvGvxF6a2WcWntRnz7F/view?usp=sharing)
+
+## Experience
+- Full-Stack Generative AI Developer, Neural Arc Inc, Pune (Sep 2026 to present): built the LLM routing engine (selects models by task type, semantic similarity, context, latency, token efficiency); built BYOK infrastructure for user API keys across 8 LLM providers with per-tenant isolation; built workflow systems connecting AI agents, APIs, models, auth and backends.
+- Full-Stack Generative AI Developer Intern, Neural Arc Inc (Jun to Sep 2026): built a multi-agent system with Python, LLMs, RAG, tool calling and orchestration, reaching 90% task success on an internal eval set; cut production incidents by 80%.
+- AI & ML Intern, Gradence Global, remote UK (Nov 2025 to May 2026): built and deployed an automated B2B lead-gen and outreach system (Python, Flask, Selenium, Gmail OAuth2, Google Sheets API, Groq Llama 3.3-70B); 68% reply rate on 100 leads, 20 hours per week saved.
+- Data Science Intern, Anyatam Adhyayan Education Services, Pune (Jan to Apr 2025): built Healthify, a diabetes prediction app (best model 84% accuracy), deployed on Render.
+
+## Projects
+- [Meridian](https://github.com/psyphon1/Meridian): autonomous AI pull request reviewer; pre-alpha (design, documentation, scaffolding and CI complete, implementation under way).
+- [Aura-Therapist](https://huggingface.co/psyphon1/Llama-2-7b-Therapist-Aura-Full): Llama-2-7B-chat fine-tuned with QLoRA (r=32, alpha=16) on 2K instruction pairs; runs on 6 GB VRAM with 4-bit NF4.
+- [PageMindAI](https://github.com/psyphon1/PageMindAI): Chrome extension (Manifest V3) with a FastAPI RAG backend; Llama 3.3-70B on Groq, FAISS, FastEmbed, LangChain.
+- [Deep Research Multi-Agent System](https://github.com/psyphon1/Deep-Research-Multi-Agent-System): LangChain and Groq agents that search the web, write a report and have a critic agent score it; [live app](https://deep-research-psyphon-agent.streamlit.app/).
+- [AI Lead Agent](https://github.com/psyphon1/AI_Lead_Agent): automated B2B outreach; [live](https://leadgenog.vercel.app/).
+- [ATS Resume Analyzer](https://github.com/psyphon1/Ats-resume-analyzer): resume parsing with RAG-based candidate search.
+- [Healthify](https://github.com/psyphon1/healthify-1.0): diabetes prediction; [live](https://healthify-yzfn.onrender.com/).
+- [MovieMatch](https://github.com/psyphon1/Movie-Recommendation-System-1.0): content-based movie recommender (TF-IDF, cosine similarity); [live](https://movie-recommendation-system-1-0.vercel.app/).
+
+## Skills
+Generative AI: LLMs, RAG, agentic AI, multi-agent systems, prompt engineering, fine-tuning, QLoRA, quantization, LangChain, LangGraph, LangFuse, Hugging Face, Llama 3, Groq. Languages: Python, Go, Java, SQL, JavaScript, TypeScript. Backend and frontend: FastAPI, Flask, Node.js, REST, OAuth2, React, Next.js. Data: PostgreSQL, MySQL, MongoDB, Pinecone, FAISS, ChromaDB. Cloud and DevOps: AWS, Azure, Docker, Jenkins, Terraform, Git.
+
+## Education and certifications
+- B.E. Computer Engineering, Sinhgad Institute of Technology and Science (SPPU), Pune, 2022 to 2026, CGPA 7.60
+- Microsoft Certified: Azure Fundamentals (AZ-900)
+- Oracle Agentic AI Certified Foundations Associate

@@ -1,0 +1,16 @@
+{
+  "name": "portfolio-e2e",
+  "version": "1.0.0",
+  "description": "End-to-end tests for the portfolio",
+  "scripts": {
+    "test": "node portfolio.e2e.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "playwright-core": "^1.64.1"
+  },
+  "private": true
+}
