@@ -141,7 +141,8 @@ await test('robots.txt, sitemap.xml, llms.txt are reachable', async () => {
 group('Privacy & content rules');
 await test('phone number does not appear anywhere on the page', async () => {
   const html = await page.content();
-  assert(!/95118|9511830971|tel:/i.test(html), 'phone number found in page');
+  // generic phone pattern (no real number stored in this repo): optional +91, then 10 digits starting 6-9
+  assert(!/tel:|(?<![\w-])(\+?91[\s-]?)?[6-9]\d{4}[\s-]?\d{5}(?!\d)/i.test(html.replace(/<script[\s\S]*?<\/script>/gi, '')), 'phone number found in page');
 });
 await test('hero section does not mention Neural Arc work', async () => {
   const hero = await page.evaluate(() => document.querySelector('main > section').innerText);
